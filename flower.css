@@ -1,0 +1,280 @@
+body{
+
+margin:0;
+background:#000;
+overflow:hidden;
+font-family:Arial;
+
+}
+
+/* TEXT */
+
+.loveText{
+
+position:absolute;
+
+top:8%;
+
+width:100%;
+
+text-align:center;
+
+font-size:70px;
+
+color:#ff6fb5;
+
+text-shadow:
+
+0 0 10px #ff6fb5,
+0 0 30px #ff6fb5,
+0 0 60px #ff6fb5;
+
+animation:fadeIn 3s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+transform:translateY(-40px);
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+/* GARDEN */
+
+.garden{
+
+position:absolute;
+
+bottom:0;
+
+width:100%;
+
+height:60%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-end;
+
+}
+
+/* FLOWER STEM */
+
+.flower{
+
+width:6px;
+
+height:0;
+
+background:#2ecc71;
+
+margin:0 80px;
+
+position:relative;
+
+animation:growStem 3s forwards;
+
+}
+
+.f2{animation-delay:1s;}
+.f3{animation-delay:2s;}
+.f4{animation-delay:3s;}
+
+/* STEM GROW */
+
+@keyframes growStem{
+
+0%{height:0}
+
+100%{height:160px}
+
+}
+
+/* FLOWER CENTER */
+
+.flower::before{
+
+content:"";
+
+position:absolute;
+
+top:-25px;
+left:-10px;
+
+width:20px;
+height:20px;
+
+background:#ffd700;
+
+border-radius:50%;
+
+box-shadow:0 0 15px #ffd700;
+
+}
+
+/* PETALS */
+
+.flower::after{
+
+content:"";
+
+position:absolute;
+
+top:-40px;
+left:-30px;
+
+width:70px;
+height:70px;
+
+background:
+
+radial-gradient(circle,#ff6fb5 30%,transparent 31%),
+
+radial-gradient(circle,#ff6fb5 30%,transparent 31%),
+
+radial-gradient(circle,#ff6fb5 30%,transparent 31%),
+
+radial-gradient(circle,#ff6fb5 30%,transparent 31%),
+
+radial-gradient(circle,#ff6fb5 30%,transparent 31%);
+
+background-position:
+
+35px 0,
+0 35px,
+35px 70px,
+70px 35px,
+35px 35px;
+
+background-size:35px 35px;
+
+background-repeat:no-repeat;
+
+transform:scale(0);
+
+animation:bloom 3s forwards;
+
+}
+
+.f2::after{animation-delay:1s;}
+.f3::after{animation-delay:2s;}
+.f4::after{animation-delay:3s;}
+
+/* PETAL BLOOM */
+
+@keyframes bloom{
+
+0%{
+
+transform:scale(0) rotate(0deg);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:scale(1) rotate(360deg);
+
+opacity:1;
+
+}
+
+}
+
+/* GRASS */
+
+.grass{
+
+width:3px;
+
+height:60px;
+
+background:#27ae60;
+
+margin:0 20px;
+
+transform-origin:bottom;
+
+animation:grassSwing 3s infinite ease-in-out;
+
+}
+
+.g1{animation-delay:0s;}
+.g2{animation-delay:1s;}
+.g3{animation-delay:2s;}
+.g4{animation-delay:1.5s;}
+
+@keyframes grassSwing{
+
+0%{transform:rotate(-5deg)}
+50%{transform:rotate(5deg)}
+100%{transform:rotate(-5deg)}
+
+}
+
+/* LOVE PARTICLES */
+
+.loveParticles{
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+}
+
+.heart{
+
+position:absolute;
+
+color:#ff6fb5;
+
+font-size:22px;
+
+animation:floatUp linear;
+
+}
+
+@keyframes floatUp{
+
+0%{
+
+transform:translateY(100vh) scale(0.5);
+
+opacity:0;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-20vh) scale(1.3);
+
+opacity:0;
+
+}
+
+}

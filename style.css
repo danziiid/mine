@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.glow-text {
+    color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 70px;
+  text-shadow: 0px 0px 20px white;
+}
+
+button {
+    padding: 10px 25px;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yesBtn, .click-here {
+    background-color: white;
+    color: black;
+}
+
+#noBtn {
+    background-color: white;
+    color: black;
+    position: relative;
+}
+
+#heartTextContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+    transition: opacity 1s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 100;
+}
