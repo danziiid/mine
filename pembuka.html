@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do You Love Me?</title>
+    <title>For You</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="glow-text">Do you love me?</h1>
-        <div class="btn-group">
-            <button id="yesBtn" onclick="location.href='love.html'">YES</button>
-            <button id="noBtn">NO</button>
-        </div>
+    <canvas id="starCanvas"></canvas>
+
+    <div class="scroll-container">
+        <section class="screen">
+            <h1 class="glow-text">Do you love me?</h1>
+            <div class="btn-group">
+                <button id="startBtn" class="decision-btn">YES</button>
+            </div>
+        </section>
+
+        <section class="screen">
+            <h1 class="glow-text">Will you be my girlfriend?</h1>
+            <div class="btn-group">
+                <button id="yesBtn" class="decision-btn">YES</button>
+                <button id="noBtn" class="decision-btn">NO</button>
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
