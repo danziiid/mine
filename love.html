@@ -3,23 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Now You Are My Girlfriend</title>
-    <link rel="stylesheet" href="style.css">
+    <title>You Are Mine</title>
+    <link rel="stylesheet" href="love.css">
 </head>
 <body>
     <canvas id="matrixCanvas"></canvas>
     
-    <div id="heartTextContainer" class="hidden">
-        <pre class="glow-text heart-text">
-
-        </pre>
-    </div>
-
-    <div class="container fade-in" id="mainContent">
-        <h1 class="glow-text">You're mine now</h1>
-        <button class="click-here" onclick="location.href='flower.html'">Click Here</button>
+    <div class="main-wrapper">
+        <div class="container">
+            <h1 class="glow-text">You're mine now</h1>
+            <div id="timer" class="timer-container">
+                <div class="time-box"><span id="days">00</span><label>Days</label></div>
+                <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
+                <div class="time-box"><span id="minutes">00</span><label>Min</label></div>
+                <div class="time-box"><span id="seconds">00</span><label>Sec</label></div>
+            </div>
+            <button class="click-here" onclick="location.href='flower.html'">Click Here</button>
+        </div>
     </div>
 
     <script src="matrix.js"></script>
+    <script>
+        function startTimer() {
+            let start = localStorage.getItem('anniversaryDate');
+            if (!start) {
+                start = new Date().getTime();
+                localStorage.setItem('anniversaryDate', start);
+            }
+
+            const startTime = parseInt(start);
+
+            function update() {
+                const now = new Date().getTime();
+                const diff = now - startTime;
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(d).padStart(2, '0');
+                document.getElementById('hours').innerText = String(h).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(s).padStart(2, '0');
+            }
+
+            setInterval(update, 1000);
+            update(); // Jalankan sekali di awal
+        }
+        window.onload = startTimer;
+    </script>
 </body>
 </html>
