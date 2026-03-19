@@ -1,69 +1,68 @@
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+    width: 100%;
+    height: 100%;
     background-color: black;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    color: white;
+    font-family: 'Georgia', serif;
+    overflow: hidden; /* Mematikan scroll bawaan browser agar tidak berantakan */
+    touch-action: none; 
 }
 
 canvas {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
 }
 
-.container {
+.scroll-container {
     position: relative;
     z-index: 10;
-    text-align: center;
+    width: 100%;
+    height: 100%;
 }
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Transisi smooth untuk perpindahan teks */
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s;
+}
+
+/* Layar kedua berada di bawah layar pertama (siap untuk scroll ke bawah) */
+.screen:nth-child(2) {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/* Saat mode aktif (setelah scroll/klik), layar 1 naik, layar 2 muncul */
+.active .screen:nth-child(1) { transform: translateY(-100%); opacity: 0; }
+.active .screen:nth-child(2) { transform: translateY(0); opacity: 1; }
 
 .glow-text {
+    font-size: clamp(24px, 5vw, 50px);
+    text-shadow: 0 0 15px white;
+    margin-bottom: 30px;
+}
+
+.decision-btn {
+    padding: 12px 40px;
+    border-radius: 30px;
+    border: 1px solid white;
+    background: rgba(255,255,255,0.1);
     color: white;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 70px;
-  text-shadow: 0px 0px 20px white;
-}
-
-button {
-    padding: 10px 25px;
-    font-size: 1.2rem;
-    border-radius: 20px;
-    border: none;
     cursor: pointer;
-    margin: 10px;
-    transition: 0.3s;
-}
-
-#yesBtn, .click-here {
-    background-color: white;
-    color: black;
-}
-
-#noBtn {
-    background-color: white;
-    color: black;
-    position: relative;
-}
-
-#heartTextContainer {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    text-align: center;
-    transition: opacity 1s ease-in-out;
-}
-
-.hidden {
-    opacity: 0;
-    pointer-events: none;
+    font-weight: bold;
 }
 
 .container {
